@@ -4,20 +4,16 @@ const path = require('path');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: make/format markdown
-
 const questions = {
   title: {
     type: 'input',
     message: 'What is your project title?',
-    value: null,
-    required: true,
+    name: 'title',
   },
   description: {
     type: 'input',
     message: 'Write a short project description?',
-    value: null,
-    required: true,
+    name: 'description',
   },
   license: {
     type: 'list',
@@ -29,47 +25,40 @@ const questions = {
       'BSD 3',
       'NONE OF THESE',
     ],
-    value: null,
-    required: true,
+    name: 'license',
   },
   installation: {
     type: 'input',
     message: 'What command should be run to install dependencies?',
     default: 'npm i',
-    value: null,
-    required: false,
+    name: 'installation',
   },
   test: {
     type: 'input',
     message: 'What command should be run to run tests?',
     default: 'npm test',
-    value: null,
-    required: false,
+    name: 'test',
   },
   usage: {
     type: 'input',
     message:
       'What does the reader need to know about using this repo?',
-    value: null,
-    required: false,
+    name: 'usage',
   },
   contributing: {
     type: 'input',
     message: 'Who were the project contributors?',
-    value: null,
-    required: true,
+    name: 'contributing',
   },
   githubUsername: {
     type: 'input',
     message: 'What is your GitHub username?',
-    value: null,
-    required: true,
+    name: 'githubUsername',
   },
   email: {
     type: 'input',
     message: 'What is your email?',
-    value: null,
-    required: true,
+    name: 'email',
   },
 };
 
@@ -78,7 +67,26 @@ function writeToFile(fileName, data) {
   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
-// TODO: write a function that takes the answers (inputs) and converts them to README format
+// Function to prompt the user with the questions
+function promptUser() {
+  return inquirer.prompt(Object.values(questions));
+}
+
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
+
+// Call the promptUser function and handle the answers
+promptUser()
+  .then((answers) => {
+    console.log(answers);
+
+    console.log('README.md file generated successfully!');
+  })
+  .catch((error) => {
+    console.error('Error occurred:', error);
+  });
 
 // TODO: Create a function to initialize app
 function init() {}
