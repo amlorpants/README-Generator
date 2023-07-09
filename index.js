@@ -73,23 +73,19 @@ function promptUser() {
 }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+function writeToFile(fileName, markdown) {
+  return fs.writeFileSync(
+    path.join(process.cwd(), fileName),
+    markdown
+  );
 }
 
-// Call the promptUser function and handle the answers
-promptUser()
-  .then((answers) => {
-    console.log(answers);
-
+function init() {
+  promptUser().then((answers) => {
+    writeToFile('uniqueREADME.md', generateMarkdown(answers));
     console.log('README.md file generated successfully!');
-  })
-  .catch((error) => {
-    console.error('Error occurred:', error);
   });
-
-// TODO: Create a function to initialize app
-function init() {}
+}
 
 // Function call to initialize app
 init();
