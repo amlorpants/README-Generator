@@ -19,8 +19,8 @@ function generateLicense(license) {
 function generateMarkdown(answers) {
   return `# ${answers.title}
 
-  ## Description 
-  ${answers.description}
+## Description 
+${answers.description}
 
 ## Table of Contents
 [description](#description)
@@ -31,24 +31,24 @@ function generateMarkdown(answers) {
 [tests](#tests)
 [questions](#questions)
 
-  ## Installation
-  ${answers.installation}
+## Installation
+${answers.installation}
 
 ## Usage
-    ${answers.usage}
+${answers.usage}
 
 ## License
 ${generateLicense(answers)}
 
 ## Contributors
-    ${answers.contributing}
+${answers.contributing}
 
 ## Tests   
- ${answers.test} 
+${answers.test} 
 
-##Questions
-  github: ${answers.githubUsername} 
-  email: ${answers.email} 
+## Questions
+github: ${answers.githubUsername} 
+email: ${answers.email} 
 `;
 }
 
