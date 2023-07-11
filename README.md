@@ -8,7 +8,7 @@ This challenge required me to create README generator. I had to create a command
 
 ## Links
 
-youtube link for video of project: https://youtu.be/NooywFO4mAg
+youtube link for video of project: https://youtu.be/8hUbuw3U3aE
 
 ## Contributors
 
